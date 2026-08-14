@@ -256,6 +256,51 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &402020105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402020107}
+  - component: {fileID: 402020106}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &402020106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402020105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9818ba93429439eb857b734109276e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  testResource: {fileID: 11400000, guid: a91fc2bd8d10447a99697e1904e868cb, type: 2}
+--- !u!4 &402020107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402020105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodProducer
       objectReference: {fileID: 0}
+    - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 402020106}
     - target: {fileID: 3980518529998641339, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.67407
@@ -501,6 +550,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrainProducer
       objectReference: {fileID: 0}
+    - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 402020106}
     - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: resourceToProduce
       value: 
@@ -567,6 +620,10 @@ PrefabInstance:
       value: StoneProducer
       objectReference: {fileID: 0}
     - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 402020106}
+    - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: resourceToProduce
       value: 
       objectReference: {fileID: 11400000, guid: 6cfbd8d1c26ef42db8d268c647a32d69, type: 2}
@@ -629,3 +686,4 @@ SceneRoots:
   - {fileID: 975909005}
   - {fileID: 1661695592}
   - {fileID: 1925393858}
+  - {fileID: 402020107}
