@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
@@ -27,6 +26,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public string GetInventoryText()
+    {
+        string result = "";
+
+        foreach (var resource in resources)
+        {
+            result += $"{resource.Key.resourceName} {resource.Value}\n";
+        }
+
+        return result;
+    }
+
     void Start()
     {
         
@@ -34,10 +45,6 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            PrintInventory();
-        }
-
+        
     }
 }
