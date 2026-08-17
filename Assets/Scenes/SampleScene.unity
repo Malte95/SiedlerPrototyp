@@ -812,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodProducer
       objectReference: {fileID: 0}
+    - target: {fileID: 2232290677672470297, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: inventory
       value: 
@@ -1123,6 +1127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrainProducer
       objectReference: {fileID: 0}
+    - target: {fileID: 2232290677672470297, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: inventory
       value: 
@@ -1191,6 +1199,10 @@ PrefabInstance:
     - target: {fileID: 2232290677672470297, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: m_Name
       value: StoneProducer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232290677672470297, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2402744711729169672, guid: 8a8bf113849124f8c826bd62072c78fa, type: 3}
       propertyPath: inventory

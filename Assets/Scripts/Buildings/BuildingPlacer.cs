@@ -4,9 +4,11 @@ public class BuildingPlacer : MonoBehaviour
 {
     public GameObject buildingPrefab;
     public Inventory inventory;
+    public int buildingLayer;
 
     void Start()
     {
+         buildingLayer = LayerMask.GetMask("Building");
     }
 
     void Update()
@@ -18,10 +20,19 @@ public class BuildingPlacer : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
-                ResourceProducer producer = newBuilding.GetComponent<ResourceProducer>();
-                producer.inventory = inventory;
+                if (Physics.CheckSphere(hit.point, 0.5f , buildingLayer))
+                {
+                    Debug.Log("Can't place building here.");
+                }
+                else
+                {
+                    GameObject newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
+                    ResourceProducer producer = newBuilding.GetComponent<ResourceProducer>();
+                    producer.inventory = inventory;
+
+                }
             }
+            
         }
     }
 }
