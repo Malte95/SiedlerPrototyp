@@ -6,6 +6,8 @@ public class BuildingPlacer : MonoBehaviour
     public Inventory inventory;
     public int buildingLayer;
 
+    private GameObject selectedBuilding;
+
     void Start()
     {
          buildingLayer = LayerMask.GetMask("Building");
@@ -20,7 +22,11 @@ public class BuildingPlacer : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (Physics.CheckSphere(hit.point, 0.5f , buildingLayer))
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Building"))
+                {
+                    selectedBuilding = hit.collider.gameObject;
+                }
+                else if (Physics.CheckSphere(hit.point, 0.5f , buildingLayer))
                 {
                     Debug.Log("Can't place building here.");
                 }
@@ -33,6 +39,11 @@ public class BuildingPlacer : MonoBehaviour
                 }
             }
             
+        }
+        if (Keyboard.current.backspaceKey.wasPressedThisFrame && selectedBuilding != null)
+        {
+            Destroy(selectedBuilding);
+            selectedBuilding = null;
         }
     }
 }
