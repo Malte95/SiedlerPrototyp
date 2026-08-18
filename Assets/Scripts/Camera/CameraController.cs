@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 
     public float moveSpeed = 10;
     public float zoomSpeed = 20;
+    public float rotationSpeed = 10;
+    private float yaw = 0;
+    private float pitch = 45;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +42,14 @@ public class CameraController : MonoBehaviour
         float scrollValue = Mouse.current.scroll.ReadValue().y;
         transform.position += transform.forward * scrollValue * zoomSpeed * Time.deltaTime;
 
-
+        if (Mouse.current.rightButton.isPressed)
+        {
+            Vector2 readValue = Mouse.current.delta.ReadValue();
+            yaw += readValue.x * rotationSpeed;
+            pitch -= readValue.y * rotationSpeed;
+            pitch = Mathf.Clamp(pitch, 10f, 80f);
+            transform.eulerAngles = new Vector3(pitch, yaw, 0); 
+        }
 
     }
 }
