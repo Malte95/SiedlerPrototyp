@@ -40,7 +40,12 @@ public class BuildingPlacer : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Building"))
                 {
+                    if (selectedBuilding != null)
+                    {
+                        selectedBuilding.GetComponent<Renderer>().material.color = Color.green;
+                    }
                     selectedBuilding = hit.collider.gameObject;
+                    selectedBuilding.GetComponent<Renderer>().material.color = Color.yellow;
                 }
                 else if (Physics.CheckSphere(hit.point, 0.5f , buildingLayer))
                 {
