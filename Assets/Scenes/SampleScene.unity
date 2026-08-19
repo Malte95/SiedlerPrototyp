@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   moveSpeed: 10
   zoomSpeed: 20
+  rotationSpeed: 10
 --- !u!1 &402020105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingPlacer
   buildingPrefab: {fileID: 4436643861085679799, guid: 96b78e02802544fd2930b09319544626, type: 3}
   inventory: {fileID: 402020106}
+  buildingLayer: 0
+  previewPrefab: {fileID: 4402836322950940808, guid: b85b93a0f710544499c00918346fd9bb, type: 3}
 --- !u!4 &2039333507
 Transform:
   m_ObjectHideFlags: 0

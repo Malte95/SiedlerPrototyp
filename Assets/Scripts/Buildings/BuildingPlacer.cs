@@ -5,22 +5,29 @@ public class BuildingPlacer : MonoBehaviour
     public GameObject buildingPrefab;
     public Inventory inventory;
     public int buildingLayer;
+    public GameObject previewPrefab;
 
     private GameObject selectedBuilding;
+    private GameObject previewInstance;
 
     void Start()
     {
          buildingLayer = LayerMask.GetMask("Building");
+         previewInstance = Instantiate(previewPrefab);
     }
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            previewInstance.transform.position = hit.point;
+            Debug.Log("Hit collider name: " + hit.collider.name + " | Hit point: " + hit.point);
+
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Building"))
                 {
