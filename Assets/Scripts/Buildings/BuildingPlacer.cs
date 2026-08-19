@@ -6,6 +6,8 @@ public class BuildingPlacer : MonoBehaviour
     public Inventory inventory;
     public int buildingLayer;
     public GameObject previewPrefab;
+    public ResourceType buildingCostType;
+    public int buildingCostAmount;
 
     private GameObject selectedBuilding;
     private GameObject previewInstance;
@@ -53,9 +55,18 @@ public class BuildingPlacer : MonoBehaviour
                 }
                 else
                 {
-                    GameObject newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
-                    ResourceProducer producer = newBuilding.GetComponent<ResourceProducer>();
-                    producer.inventory = inventory;
+                    if (inventory.HasEnough(buildingCostType, buildingCostAmount))
+                    {
+                        GameObject newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
+                        ResourceProducer producer = newBuilding.GetComponent<ResourceProducer>();
+                        producer.inventory = inventory;
+                        inventory.AddResource(buildingCostType, -buildingCostAmount);
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough resources");
+                    }
+                    
 
                 }
             }

@@ -1295,6 +1295,8 @@ MonoBehaviour:
   inventory: {fileID: 402020106}
   buildingLayer: 0
   previewPrefab: {fileID: 4402836322950940808, guid: b85b93a0f710544499c00918346fd9bb, type: 3}
+  buildingCostType: {fileID: 11400000, guid: a91fc2bd8d10447a99697e1904e868cb, type: 2}
+  buildingCostAmount: 5
 --- !u!4 &2039333507
 Transform:
   m_ObjectHideFlags: 0

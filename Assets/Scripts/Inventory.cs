@@ -38,6 +38,11 @@ public class Inventory : MonoBehaviour
         return result;
     }
 
+    public bool HasEnough(ResourceType type, int amount)
+    {
+        return resources.ContainsKey(type) && resources[type] >= amount;
+    }
+
     void Start()
     {
         
