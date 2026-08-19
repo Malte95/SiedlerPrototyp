@@ -25,7 +25,16 @@ public class BuildingPlacer : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             previewInstance.transform.position = hit.point;
-            Debug.Log("Hit collider name: " + hit.collider.name + " | Hit point: " + hit.point);
+            Renderer renderer = previewInstance.GetComponent<Renderer>();
+
+            if (Physics.CheckSphere(hit.point, 0.5f, buildingLayer))
+            {
+                renderer.material.color = Color.red;
+            }
+            else
+            {
+                renderer.material.color = Color.green;
+            }
 
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
