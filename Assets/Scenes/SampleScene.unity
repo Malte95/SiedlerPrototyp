@@ -1352,12 +1352,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9e6f0f6384e4bfbb7180eaddf99dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingPlacer
-  buildingPrefab: {fileID: 4436643861085679799, guid: 96b78e02802544fd2930b09319544626, type: 3}
+  buildingPrefab1: {fileID: 4436643861085679799, guid: 96b78e02802544fd2930b09319544626, type: 3}
+  cost1Type: {fileID: 11400000, guid: a91fc2bd8d10447a99697e1904e868cb, type: 2}
+  cost1Amount: 1
+  buildingPrefab2: {fileID: 3915037131684136687, guid: 70dc7462b38914f8bac13e0b398cb4ba, type: 3}
+  cost2Type: {fileID: 11400000, guid: a91fc2bd8d10447a99697e1904e868cb, type: 2}
+  cost2Amount: 1
   inventory: {fileID: 402020106}
   buildingLayer: 0
   previewPrefab: {fileID: 4402836322950940808, guid: b85b93a0f710544499c00918346fd9bb, type: 3}
-  buildingCostType: {fileID: 11400000, guid: a91fc2bd8d10447a99697e1904e868cb, type: 2}
-  buildingCostAmount: 3
 --- !u!4 &2039333507
 Transform:
   m_ObjectHideFlags: 0

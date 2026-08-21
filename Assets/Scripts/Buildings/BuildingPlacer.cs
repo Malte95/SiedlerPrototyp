@@ -2,20 +2,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class BuildingPlacer : MonoBehaviour
 {
-    public GameObject buildingPrefab;
+    public GameObject buildingPrefab1;
+    public ResourceType cost1Type;
+    public int cost1Amount;
+
+    public GameObject buildingPrefab2;
+    public ResourceType cost2Type;
+    public int cost2Amount;
+
     public Inventory inventory;
     public int buildingLayer;
     public GameObject previewPrefab;
-    public ResourceType buildingCostType;
-    public int buildingCostAmount;
 
     private GameObject selectedBuilding;
     private GameObject previewInstance;
 
+    private GameObject currentPrefab;
+    private ResourceType currentCostType;
+    private int currentCostAmount;
+
     void Start()
     {
-         buildingLayer = LayerMask.GetMask("Building");
-         previewInstance = Instantiate(previewPrefab);
+        buildingLayer = LayerMask.GetMask("Building");
+        previewInstance = Instantiate(previewPrefab);
+        currentPrefab = buildingPrefab1;
+        currentCostType = cost1Type;
+        currentCostAmount = cost1Amount;
+
     }
 
     void Update()
@@ -23,6 +36,20 @@ public class BuildingPlacer : MonoBehaviour
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            currentPrefab = buildingPrefab1;
+            currentCostType = cost1Type;
+            currentCostAmount = cost1Amount;
+        }
+
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            currentPrefab = buildingPrefab2;
+            currentCostType = cost2Type;
+            currentCostAmount = cost2Amount;
+        }
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -55,12 +82,20 @@ public class BuildingPlacer : MonoBehaviour
                 }
                 else
                 {
-                    if (inventory.HasEnough(buildingCostType, buildingCostAmount))
+                    if (inventory.HasEnough(currentCostType, currentCostAmount))
                     {
-                        GameObject newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
+                        GameObject newBuilding = Instantiate(currentPrefab, hit.point, Quaternion.identity);
                         ResourceProducer producer = newBuilding.GetComponent<ResourceProducer>();
-                        producer.inventory = inventory;
-                        inventory.AddResource(buildingCostType, -buildingCostAmount);
+                        if (producer != null)
+                        {
+                            producer.inventory = inventory;
+                        }
+                        ResourceConverter converter = newBuilding.GetComponent<ResourceConverter>();
+                        if (converter != null)
+                        {
+                            converter.inventory = inventory;
+                        }
+                        inventory.AddResource(currentCostType, -currentCostAmount);
                     }
                     else
                     {
